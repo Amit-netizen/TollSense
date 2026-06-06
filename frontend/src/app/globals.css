@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #22c55e;
+    --brand-dim: rgba(34, 197, 94, 0.12);
+    --surface-card: #111827;
+    --border: rgba(255,255,255,0.07);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-gray-900 border border-white/[0.06] rounded-xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-brand-500/30 hover:shadow-glow;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-lg
+           transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-medium px-4 py-2 
+           rounded-lg transition-all duration-150 border border-white/[0.06];
+  }
+
+  .input {
+    @apply bg-gray-900 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-100
+           focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/20
+           placeholder:text-slate-500 transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-green  { @apply badge bg-brand-500/15 text-brand-400; }
+  .badge-yellow { @apply badge bg-amber-500/15 text-amber-400; }
+  .badge-red    { @apply badge bg-red-500/15 text-red-400; }
+  .badge-blue   { @apply badge bg-blue-500/15 text-blue-400; }
+  .badge-gray   { @apply badge bg-white/5 text-slate-400; }
+
+  .stat-card {
+    @apply card p-5 flex flex-col gap-1;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all duration-150;
+  }
+
+  .nav-link.active {
+    @apply bg-brand-500/10 text-brand-400 border border-brand-500/20;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background: #0f172a !important;
+  border-radius: 0.75rem;
+}
+.leaflet-tile {
+  filter: brightness(0.7) saturate(0.6);
+}
+.leaflet-control-attribution {
+  background: rgba(0,0,0,0.6) !important;
+  color: #64748b !important;
+}
